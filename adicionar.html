@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloco de Notas</title>
+    <title>Diário de Emoções</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,8 +13,8 @@
         }
 
         .container {
-            width: 400px;
-            margin: 20px auto;
+            width: 90%;
+            margin: 5% auto;
             background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -69,6 +69,10 @@
             border-radius: 5px;
             margin-top: 20px;
             padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            object-fit:fill;
+            
         }
 
         .emotions-tab img {
@@ -77,28 +81,63 @@
             margin-right: 5px;
             cursor: pointer;
         }
+
+        .message {
+            background-color: #23c2c5;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="title-bar">
-            <h1>Bloco de Notas</h1>
+            <h1>Meu Diário de Emoções</h1>
         </div>
         <div class="content">
-            <textarea placeholder="Digite suas notas aqui..."></textarea>
+            <textarea placeholder="Como você está se sentindo hoje..."></textarea>
         </div>
         <div class="footer">
-            <button>Salvar</button>
+            <button onclick="mostrarMensagem()">Salvar</button>
+            <button onclick="redirectToAnotherPage()">Voltar</button>
         </div>
         <div class="emotions-tab">
             <span>Emoções:</span>
-            <img src="segunda.png" alt="Segunda-feira" title="Tristeza">
-            <img src="terca.png" alt="Terça-feira" title="Raiva">
-            <img src="quarta.png" alt="Quarta-feira" title="Medo">
-            <img src="quinta.png" alt="Quinta-feira" title="Feliz">
-            <img src="sexta.png" alt="Sexta-feira" title="Neutro">
-            <img src="sabado.png" alt="Sábado" title="Apaixonado">
+            <img src="segunda.png" alt="Segunda-feira" title="Tristeza" onclick="selecionarEmocao('Tristeza')">
+            <img src="terca.png" alt="Terça-feira" title="Raiva" onclick="selecionarEmocao('Raiva')">
+            <img src="quarta.png" alt="Quarta-feira" title="Medo" onclick="selecionarEmocao('Medo')">
+            <img src="quinta.png" alt="Quinta-feira" title="Feliz" onclick="selecionarEmocao('Feliz')">
+            <img src="sexta.png" alt="Sexta-feira" title="Neutro" onclick="selecionarEmocao('Neutro')">
+            <img src="sabado.png" alt="Sábado" title="Apaixonado" onclick="selecionarEmocao('Apaixonado')">
         </div>
     </div>
+
+    <script>
+        function selecionarEmocao(emocao) {
+            alert('Você selecionou que seu humor do dia foi: ' + emocao);
+        }
+
+        function mostrarMensagem() {
+            var mensagem = document.createElement('div');
+            mensagem.classList.add('message');
+            mensagem.textContent = 'Humor do dia salvo com sucesso';
+            document.querySelector('.container').appendChild(mensagem);
+            setTimeout(function() {
+                mensagem.remove();
+            }, 3000);
+            document.body.appendChild(selectedEmotion);
+
+            setTimeout(function() {
+                mensagem.remove();
+                selectedEmotion.remove();
+            }, 3000);
+
+        }
+            function redirectToAnotherPage() {
+            window.location.href = "index.html";
+        } 
+    </script>
 </body>
-</html>
+</html> 
