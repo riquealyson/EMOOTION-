@@ -4,9 +4,9 @@
   "display": "standalone",
   "name": "emootion: diário de emoções",
   "orientation": "portrait",
-  "scope": "/adicionar.html",
+  "scope": "adicionar.html",
   "short_name": "emootion",
-  "start_url": "/index.html",
+  "start_url": "index.html",
   "theme_color": "#546d8e",
   "lang": "pt",
   "icons": [
